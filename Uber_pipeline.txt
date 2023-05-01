@@ -1,0 +1,64 @@
+Commands on GCP E2 Instance [on SSH Browser]
+--------
+
+#will update system
+sudo apt-get update -y 
+
+#install python
+sudo apt-get install python3-distutils
+sudo apt-get install python3-apt
+
+#install pip
+sudo apt-get install wget
+wget https://bootstrap.pypa.io/get-pip.py
+
+#validate installation status by typing
+python3  [this will open python shell]
+
+# Install Pandas
+sudo pip3 install pandas
+
+# Install Mage
+sudo pip3 install mage-ai
+
+# Install Google Cloud Library
+sudo pip3 install google-cloud
+
+sudo pip3 install google-cloud-bigquery
+
+# start mage
+start mage uber-de-project
+
+Under Network, Click on nic0
+Under Firewall, click on add firewall rule
+Give Name
+Target - All
+Source IP - 0.0.0.0/0 or give your external IP address from instance page
+TCP - give Port of Mage running on 6789
+Save
+
+and launch the publicIp:6789 with http
+http://34.93.24.194:6789/pipelines
+
+
+Add Loader, Transformer, Exporter
+
+in Exporter
+Need Keys
+for this
+Search APIs and Services
+Click on Creds
+Create Creds->Service Account
+Give Name
+Role - BigQueryAdmin and Save
+On Main Screen
+click on name of creds created
+and click on keys tab
+it will give all keys
+mention these details on the io_config_yaml file
+Exporter will read this and transfer data to big query
+
+
+
+
+http://34.93.24.194:6789/pipelines/black_pond/edit?sideview=tree
